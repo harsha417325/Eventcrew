@@ -1,0 +1,287 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile representation in EventCrew",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "role": { "type": "string", "enum": ["organizer", "worker", "admin"] },
+        "avatar": { "type": "string" },
+        "phone": { "type": "string" },
+        "city": { "type": "string" },
+        "skills": { "type": "array" },
+        "experience": { "type": "string" },
+        "hourlyRate": { "type": "number" },
+        "bio": { "type": "string" },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "number" },
+        "walletBalance": { "type": "number" },
+        "isVerified": { "type": "boolean" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "role"]
+    },
+    "Event": {
+      "title": "Event",
+      "description": "Event posting by an organizer with required roles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "city": { "type": "string" },
+        "venue": { "type": "string" },
+        "startDate": { "type": "string" },
+        "endDate": { "type": "string" },
+        "time": { "type": "string" },
+        "organizerId": { "type": "string" },
+        "organizerName": { "type": "string" },
+        "organizerAvatar": { "type": "string" },
+        "organizerRating": { "type": "number" },
+        "status": { "type": "string" },
+        "bannerUrl": { "type": "string" },
+        "budgetTotal": { "type": "number" },
+        "rolesNeeded": { "type": "array" }
+      },
+      "required": ["id", "title", "category", "city", "venue", "organizerId", "status", "rolesNeeded"]
+    },
+    "Application": {
+      "title": "Application",
+      "description": "Job application submitted by crew worker",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "eventBanner": { "type": "string" },
+        "eventCity": { "type": "string" },
+        "eventDate": { "type": "string" },
+        "jobRoleId": { "type": "string" },
+        "jobRoleTitle": { "type": "string" },
+        "payAmount": { "type": "number" },
+        "workerId": { "type": "string" },
+        "workerName": { "type": "string" },
+        "workerAvatar": { "type": "string" },
+        "workerPhone": { "type": "string" },
+        "workerCity": { "type": "string" },
+        "organizerId": { "type": "string" },
+        "organizerName": { "type": "string" },
+        "status": { "type": "string" },
+        "appliedAt": { "type": "string" },
+        "coverNote": { "type": "string" },
+        "payoutStatus": { "type": "string" }
+      },
+      "required": ["id", "eventId", "jobRoleId", "workerId", "organizerId", "status", "payAmount"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "Direct or group chat conversation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "participantIds": { "type": "array" },
+        "participantNames": { "type": "array" },
+        "participantAvatars": { "type": "array" },
+        "lastMessage": { "type": "string" },
+        "lastMessageTime": { "type": "string" },
+        "unreadCount": { "type": "number" },
+        "isGroup": { "type": "boolean" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" }
+      },
+      "required": ["id", "participantIds"]
+    },
+    "Message": {
+      "title": "Message",
+      "description": "Individual message sent in a conversation",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "conversationId": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "senderId": { "type": "string" },
+        "senderName": { "type": "string" },
+        "senderAvatar": { "type": "string" },
+        "receiverId": { "type": "string" },
+        "receiverName": { "type": "string" },
+        "receiverAvatar": { "type": "string" },
+        "text": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["id", "senderId", "text", "timestamp"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Wallet and escrow payment record",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "type": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string" },
+        "description": { "type": "string" },
+        "date": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" }
+      },
+      "required": ["id", "userId", "type", "amount", "status", "date"]
+    },
+    "Review": {
+      "title": "Review",
+      "description": "Rating and feedback review for worker or organizer",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "authorId": { "type": "string" },
+        "authorName": { "type": "string" },
+        "authorAvatar": { "type": "string" },
+        "authorRole": { "type": "string" },
+        "targetId": { "type": "string" },
+        "targetName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "eventId", "authorId", "targetId", "rating", "comment"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "In-app notifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string" },
+        "read": { "type": "boolean" },
+        "date": { "type": "string" }
+      },
+      "required": ["id", "userId", "title", "message", "type", "read", "date"]
+    },
+    "Complaint": {
+      "title": "Complaint",
+      "description": "User reported complaints",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "reporterId": { "type": "string" },
+        "reporterName": { "type": "string" },
+        "reporterRole": { "type": "string" },
+        "targetId": { "type": "string" },
+        "targetName": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "resolution": { "type": "string" }
+      },
+      "required": ["id", "reporterId", "targetId", "category", "description", "status", "createdAt"]
+    },
+    "Dispute": {
+      "title": "Dispute",
+      "description": "Escrow payment dispute",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "applicationId": { "type": "string" },
+        "initiatedBy": { "type": "string" },
+        "initiatorRole": { "type": "string" },
+        "opponentId": { "type": "string" },
+        "opponentName": { "type": "string" },
+        "amount": { "type": "number" },
+        "reason": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "resolutionNotes": { "type": "string" }
+      },
+      "required": ["id", "eventId", "applicationId", "initiatedBy", "amount", "reason", "status"]
+    },
+    "Invoice": {
+      "title": "Invoice",
+      "description": "Automated billing invoice",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "invoiceNumber": { "type": "string" },
+        "eventId": { "type": "string" },
+        "eventTitle": { "type": "string" },
+        "organizerId": { "type": "string" },
+        "organizerName": { "type": "string" },
+        "organizerCompany": { "type": "string" },
+        "organizerGst": { "type": "string" },
+        "workerId": { "type": "string" },
+        "workerName": { "type": "string" },
+        "jobRoleTitle": { "type": "string" },
+        "amount": { "type": "number" },
+        "platformFee": { "type": "number" },
+        "tax": { "type": "number" },
+        "totalAmount": { "type": "number" },
+        "date": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["id", "invoiceNumber", "eventId", "organizerId", "workerId", "amount", "totalAmount", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/User" },
+      "description": "User profile collection"
+    },
+    "/events/{eventId}": {
+      "schema": { "$ref": "#/entities/Event" },
+      "description": "Event postings collection"
+    },
+    "/applications/{applicationId}": {
+      "schema": { "$ref": "#/entities/Application" },
+      "description": "Crew applications collection"
+    },
+    "/conversations/{conversationId}": {
+      "schema": { "$ref": "#/entities/Conversation" },
+      "description": "Chat conversations collection"
+    },
+    "/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/Message" },
+      "description": "Direct and group chat messages"
+    },
+    "/transactions/{transactionId}": {
+      "schema": { "$ref": "#/entities/Transaction" },
+      "description": "Transactions collection"
+    },
+    "/reviews/{reviewId}": {
+      "schema": { "$ref": "#/entities/Review" },
+      "description": "User reviews and ratings"
+    },
+    "/notifications/{notificationId}": {
+      "schema": { "$ref": "#/entities/Notification" },
+      "description": "Notifications collection"
+    },
+    "/complaints/{complaintId}": {
+      "schema": { "$ref": "#/entities/Complaint" },
+      "description": "Complaints collection"
+    },
+    "/disputes/{disputeId}": {
+      "schema": { "$ref": "#/entities/Dispute" },
+      "description": "Disputes collection"
+    },
+    "/invoices/{invoiceId}": {
+      "schema": { "$ref": "#/entities/Invoice" },
+      "description": "Invoices collection"
+    }
+  }
+}

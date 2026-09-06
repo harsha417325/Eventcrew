@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0F172A;
+  --color-purple: #7C3AED;
+  --color-purple-hover: #6D28D9;
+  --color-orange: #F97316;
+  --color-orange-hover: #EA580C;
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #1E293B;
+  --color-text-secondary: #64748B;
+  --color-border: #E2E8F0;
+  --color-success: #22C55E;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+  --color-info: #3B82F6;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --theme-navy: #0F172A;
+    --theme-purple: #7C3AED;
+    --theme-purple-hover: #6D28D9;
+    --theme-orange: #F97316;
+    --theme-orange-hover: #EA580C;
+    --theme-background: #F8FAFC;
+    --theme-surface: #FFFFFF;
+    --theme-text-primary: #1E293B;
+    --theme-text-secondary: #64748B;
+    --theme-border: #E2E8F0;
+    --theme-success: #22C55E;
+    --theme-error: #EF4444;
+    --theme-warning: #F59E0B;
+    --theme-info: #3B82F6;
+  }
+
+  body {
+    background-color: #F8FAFC;
+    color: #1E293B;
+  }
+
+  .dark body {
+    background-color: #0F172A;
+    color: #F8FAFC;
+  }
+}
+
+/* EventCrew Design System Utilities */
+.bg-navy {
+  background-color: #0F172A;
+}
+.bg-purple-brand {
+  background-color: #7C3AED;
+}
+.bg-orange-brand {
+  background-color: #F97316;
+}
+.bg-surface {
+  background-color: #FFFFFF;
+}
+.bg-page {
+  background-color: #F8FAFC;
+}
+
+.text-navy {
+  color: #0F172A;
+}
+.text-purple-brand {
+  color: #7C3AED;
+}
+.text-orange-brand {
+  color: #F97316;
+}
+.text-primary {
+  color: #1E293B;
+}
+.text-secondary {
+  color: #64748B;
+}
+.text-success {
+  color: #22C55E;
+}
+
+.border-theme {
+  border-color: #E2E8F0;
+}
+.border-purple-brand {
+  border-color: #7C3AED;
+}
+.border-orange-brand {
+  border-color: #F97316;
+}
+
+/* Soft Badges */
+.badge-soft-purple {
+  background-color: #EDE9FE;
+  color: #7C3AED;
+}
+.badge-soft-orange {
+  background-color: #FFEDD5;
+  color: #F97316;
+}
+.badge-soft-green {
+  background-color: #DCFCE7;
+  color: #22C55E;
+}
+.badge-soft-blue {
+  background-color: #E0F2FE;
+  color: #3B82F6;
+}
+.badge-soft-red {
+  background-color: #FEE2E2;
+  color: #EF4444;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.5);
+}
